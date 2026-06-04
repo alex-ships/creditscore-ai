@@ -1,0 +1,358 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  }
+
+body {
+font-family: Arial, sans-serif;
+color: white;
+min-height: 100vh;
+overflow-x: hidden;
+
+background: linear-gradient(
+-45deg,
+#020617,
+#0f172a,
+#1e3a8a,
+#2563eb,
+#38bdf8
+);
+
+background-size: 400% 400%;
+animation: gradientMove 12s ease infinite;
+}
+
+#root {
+min-height: 100vh;
+}
+
+/* Background */
+
+@keyframes gradientMove {
+0% {
+background-position: 0% 50%;
+}
+50% {
+background-position: 100% 50%;
+}
+100% {
+background-position: 0% 50%;
+}
+}
+
+/* Animated Blobs */
+
+.blob {
+position: fixed;
+border-radius: 50%;
+filter: blur(100px);
+opacity: 0.7;
+z-index: -1;
+}
+
+.blob1 {
+width: 350px;
+height: 350px;
+top: 5%;
+left: 5%;
+
+animation:
+moveBlob1 12s infinite alternate ease-in-out,
+colorShift 10s infinite linear;
+}
+
+.blob2 {
+width: 400px;
+height: 400px;
+bottom: 5%;
+right: 5%;
+
+animation:
+moveBlob2 15s infinite alternate ease-in-out,
+colorShift 14s infinite linear reverse;
+}
+
+@keyframes moveBlob1 {
+from {
+transform: translate(0, 0);
+}
+to {
+transform: translate(180px, 120px);
+}
+}
+
+@keyframes moveBlob2 {
+from {
+transform: translate(0, 0);
+}
+to {
+transform: translate(-180px, -120px);
+}
+}
+
+@keyframes colorShift {
+0% { background: #00ffff; }
+20% { background: #00ff88; }
+40% { background: #ff00ff; }
+60% { background: #ff6b00; }
+80% { background: #ffff00; }
+100% { background: #00ffff; }
+}
+
+/* Navbar */
+
+.navbar {
+display: flex;
+justify-content: space-between;
+align-items: center;
+padding: 25px 60px;
+}
+
+.navbar h2 {
+font-size: 2rem;
+}
+
+.navbar div {
+display: flex;
+gap: 30px;
+}
+
+.navbar a {
+text-decoration: none;
+color: white;
+transition: 0.3s;
+}
+
+.navbar a:hover {
+color: #38bdf8;
+}
+
+/* Hero */
+
+.hero {
+min-height: 75vh;
+
+display: flex;
+flex-direction: column;
+
+justify-content: center;
+align-items: center;
+
+text-align: center;
+gap: 25px;
+}
+
+.typing {
+font-size: 5rem;
+
+overflow: hidden;
+white-space: nowrap;
+
+border-right: 4px solid white;
+
+width: 14ch;
+
+animation:
+typing 3s steps(14),
+blink 0.8s infinite;
+
+text-shadow: 0 0 30px white;
+}
+
+@keyframes typing {
+from {
+width: 0;
+}
+to {
+width: 14ch;
+}
+}
+
+@keyframes blink {
+50% {
+border-color: transparent;
+}
+}
+
+.hero p {
+font-size: 1.4rem;
+max-width: 700px;
+}
+
+/* Buttons */
+
+.apply-btn {
+padding: 18px 42px;
+border: none;
+border-radius: 14px;
+
+background: white;
+color: #1e3a8a;
+
+font-weight: bold;
+cursor: pointer;
+
+transition: all 0.3s ease;
+}
+
+.apply-btn:hover {
+transform: translateY(-6px) scale(1.08);
+}
+
+/* Features */
+
+.features {
+display: flex;
+justify-content: center;
+
+gap: 30px;
+
+flex-wrap: wrap;
+
+padding: 40px;
+}
+
+.card {
+width: 320px;
+
+padding: 30px;
+
+border-radius: 25px;
+
+background: rgba(255,255,255,0.1);
+
+backdrop-filter: blur(15px);
+
+text-align: center;
+
+transition: 0.4s;
+
+animation: floatCard 4s ease-in-out infinite;
+}
+
+.card:hover {
+transform: translateY(-12px) scale(1.05);
+}
+
+.card h3 {
+margin-bottom: 15px;
+}
+
+@keyframes floatCard {
+0% {
+transform: translateY(0px);
+}
+
+50% {
+transform: translateY(-12px);
+}
+
+100% {
+transform: translateY(0px);
+}
+}
+
+/* Modal */
+
+.modal {
+position: fixed;
+inset: 0;
+
+background: rgba(0, 0, 0, 0.6);
+
+display: flex;
+justify-content: center;
+align-items: center;
+
+backdrop-filter: blur(8px);
+
+animation: fadeIn 0.4s ease;
+}
+
+.form-card {
+width: 450px;
+
+background: rgba(255,255,255,0.1);
+
+backdrop-filter: blur(20px);
+
+border-radius: 25px;
+
+padding: 30px;
+
+display: flex;
+flex-direction: column;
+
+gap: 15px;
+}
+
+.form-card h2 {
+text-align: center;
+}
+
+.form-card input,
+.form-card select {
+padding: 14px;
+
+border: none;
+border-radius: 12px;
+
+outline: none;
+
+font-size: 1rem;
+}
+
+.close-btn {
+padding: 12px;
+
+border: none;
+border-radius: 12px;
+
+background: crimson;
+
+color: white;
+
+cursor: pointer;
+}
+
+@keyframes fadeIn {
+from {
+opacity: 0;
+}
+
+to {
+opacity: 1;
+}
+}
+.loader-container {
+  width: 100%;
+  height: 12px;
+  background: rgba(255,255,255,0.15);
+  border-radius: 50px;
+  overflow: hidden;
+  margin: 20px 0;
+}
+
+.loader-bar {
+  height: 100%;
+  width: 30%;
+  border-radius: 50px;
+  background: linear-gradient(
+    90deg,
+    #00f5ff,
+    #7c3aed,
+    #ff00c8
+  );
+  animation: netflixLoad 1s infinite linear;
+}
+
+@keyframes netflixLoad {
+  0% {
+    transform: translateX(-150%);
+  }
+
+  100% {
+    transform: translateX(400%);
+  }
+}
